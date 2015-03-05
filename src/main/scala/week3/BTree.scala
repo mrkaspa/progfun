@@ -1,9 +1,12 @@
 package week3
 
+import scala.util.Try
+
 /**
  * Created by michelperez on 2/17/15.
  */
 abstract class IntSet[A] {
+
   def incl(x: A): IntSet[A]
 
   def contains(x: A): Boolean
