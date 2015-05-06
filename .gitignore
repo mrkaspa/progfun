@@ -3,3 +3,8 @@ log/**/*
 .idea/**/*
 tmp/**/*
 target/**
+/RUNNING_PID
+/project/*-shim.sbt
+/project/project/
+/project/target/
+.idea/

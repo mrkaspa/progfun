@@ -31,13 +31,36 @@ object QueenApp extends App {
   def showQueens(queens: List[Int]) = {
     val lines =
       for (col <- queens.reverse)
-      yield Vector.fill(queens.length)("* ").updated(col, "X ").mkString
+        yield Vector.fill(queens.length)("* ").updated(col, "X ").mkString
     "\n" + (lines mkString "\n")
   }
 
-  val solutions = queens(6)
+  val t0 = System.nanoTime()
+  val solutions = queens(7)
+
+  val t1 = System.nanoTime()
+
+  println("Elapsed time: " + (t1 - t0) / (1000 * 1000) + "ms")
+  println("# Solutions = " + solutions.size)
+
   solutions foreach { queens =>
     println(showQueens(queens))
   }
+
+  val secondElement = List(1,2,3) match {
+    case x :: y :: xs => y
+    case _ => 0
+  }
+
+  val foodItem = "porridge"
+
+  def goldilocks(expr: Any) = expr match {
+    case (`foodItem`, _) => "eating"
+    case ("chair", "Mama") => "sitting"
+    case ("bed", "Baby") => "sleeping"
+    case _ => "what?"
+  }
+
+  goldilocks(("porridge", "Papa"))
 
 }
