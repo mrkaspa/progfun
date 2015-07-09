@@ -4,7 +4,7 @@
 		module="progfun-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20150414210025"
+		publication="20150708093319"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>
