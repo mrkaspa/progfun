@@ -1,12 +1,11 @@
 package scalaz
 
-import scalaz._
-import Scalaz._
+import scalaz.Scalaz._
 
 /**
  * Created by michelperez on 4/17/15.
  */
-object ScalaZ1 {
+object ScalaZ1 extends App {
 
   trait CanTruthy[A] {
     self =>
@@ -38,10 +37,6 @@ object ScalaZ1 {
         implicit def F: CanTruthy[A] = ev
       }
   }
-
-}
-
-object Main1 extends App {
 
   import ScalaZ1._
   import ToCanIsTruthyOps._
@@ -80,9 +75,9 @@ object Main1 extends App {
   }
 
   ifk("") {
-    println("NO EMPTY")
+    1
   } {
-    println("EMPTY")
+    ""
   }
 
   val str: String = ifr("123") {
