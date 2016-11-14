@@ -12,9 +12,9 @@ object Sums extends App {
 
   def sumBlock(a: Int, b: Int)(f: (Int) => Int): Int = {
     if (a > b) 0
-    else f(a) + (sumBlock(a + 1, b) {
+    else f(a) + sumBlock(a + 1, b) {
       f
-    })
+    }
   }
 
   def nothing(x: Int) = x
@@ -44,18 +44,18 @@ object Sums extends App {
     loop(a, 0)
   }
 
-  printf(s"\n${sumTail(x => x, 1, 3)}")
+  printf(s"SUM TAIL\n${sumTail(x => x, 1, 5)}")
 
   //function returning another function
   def sumGen(f: Int => Int): (Int, Int) => Int = {
     def sumRec(a: Int, b: Int): Int = {
-      if (a > b) 0 else f(a) + (sumRec(a + 1, b))
+      if (a > b) 0 else f(a) + sumRec(a + 1, b)
     }
     sumRec
   }
 
   def sumCurr(f: Int => Int)(a: Int, b: Int): Int = {
-    if (a > b) 0 else f(a) + (sumCurr(f)(a + 1, b))
+    if (a > b) 0 else f(a) + sumCurr(f)(a + 1, b)
   }
 
   val sumCube = sumCurr(x => x * x * x)(_, _)

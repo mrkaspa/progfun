@@ -42,5 +42,5 @@ object LinkedListApp extends App {
 
   def f(xs: LinkedList[NonEmpty[Int]], x: Empty[Int]) = xs.prepend(x)
 
-  println(f(new Cons[NonEmpty[Int]](new NonEmpty[Int](3, new Empty[Int], new Empty[Int]), Nil), new Empty[Int]).getClass )
+  println(f(new Cons[NonEmpty[Int]](new NonEmpty[Int](3, new Empty[Int], new Empty[Int]), Nil), new Empty[Int]).getClass)
 }

@@ -13,7 +13,7 @@ object QueenApp extends App {
         for {
           queens <- placeQueens(k - 1)
           col <- 0 until n
-          if (isSafe(col, queens))
+          if isSafe(col, queens)
         } yield col :: queens
     }
 

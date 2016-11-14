@@ -1,8 +1,9 @@
 package future
 
-import rx.lang.scala.{Subscription, Observable}
-import scala.language.postfixOps
+import rx.lang.scala.{Observable, Subscription}
+
 import scala.concurrent.duration._
+import scala.language.postfixOps
 
 /**
  * Created by michelperez on 2/25/15.
@@ -35,8 +36,6 @@ object ObservablesExample extends App {
     Subscription {}
   })
 
-  obs subscribe {
-    println(_)
-  }
+  obs subscribe (println(_))
 
 }
