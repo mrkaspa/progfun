@@ -12,7 +12,7 @@ object Demo extends App {
     num <- ls
     cat <- ss
   } yield {
-    println(num)
+    println(num + cat)
   }
 
   val f = (a: String) => {
@@ -35,5 +35,7 @@ object Demo extends App {
   list match {
     case hd :: _ =>
       println(s"cabeza $hd")
+    case _ =>
+      println("no hay cabeza")
   }
 }

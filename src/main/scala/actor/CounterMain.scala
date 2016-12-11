@@ -1,11 +1,10 @@
 package actor
 
-import akka.actor.{ActorSystem, Actor, Props}
-import akka.actor.Actor.Receive
+import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 
 /**
- * Created by michelperez on 2/27/15.
- */
+  * Created by michelperez on 2/27/15.
+  */
 object CounterMain extends App {
 
   class Counter extends Actor {
@@ -13,18 +12,11 @@ object CounterMain extends App {
 
     override def receive: Receive = {
       case "incr" => count += 1
-      case "get" => sender ! count
+      case ("get", actor: ActorRef) => actor ! count
     }
   }
 
   class Main extends Actor {
-    val counter = context.actorOf(Props[Counter], "counter")
-
-    counter ! "incr"
-    counter ! "incr"
-    counter ! "incr"
-    counter ! "get"
-
     override def receive: Actor.Receive = {
       case count: Int =>
         println(s"count was $count")
@@ -33,7 +25,11 @@ object CounterMain extends App {
   }
 
   val system = ActorSystem("system")
-
+  val counterActor = system.actorOf(Props[Counter])
   val mainActor = system.actorOf(Props[Main])
 
+  counterActor ! "incr"
+  counterActor ! "incr"
+  counterActor ! "incr"
+  counterActor ! ("get", mainActor)
 }

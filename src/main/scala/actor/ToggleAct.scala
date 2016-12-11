@@ -4,16 +4,12 @@ import akka.actor.Actor
 import akka.actor.Actor.Receive
 
 /**
- * Created by michelperez on 3/7/15.
- */
-class ToggleAct {
-
-}
+  * Created by michelperez on 3/7/15.
+  */
 
 class Toggle extends Actor {
-
   override def receive: Receive = happy
-  
+
   def happy: Receive = {
     case "How are you?" =>
       sender ! "happy"
@@ -25,5 +21,4 @@ class Toggle extends Actor {
       sender ! "sad"
       context become sad
   }
-
 }
